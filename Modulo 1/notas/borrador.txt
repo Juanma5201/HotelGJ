@@ -1,0 +1,64 @@
+Barra navegacion fija
+(--navbar--)
+/* position: fixed; */
+_____________________________________
+En .css
+Section [id] {scroll-margin-top: 70px;}
+
+html{scroll-behavior: smooth;}
+___________________________________________
+.overlay
+{visibility: hidden;
+opacity: 0;}
+___________________________________________
+editar home adaptacion a pantalla
+__________________________________________
+array habitaciones
+var habitaciones = {
+    {tipo: "single", tamaño: 38, baño: "si", imgUrl:"https",imgUrl:"https",imgUrl:"https"} 
+    {tipo: "doble" , tamaño: 42, baño: "si", imgUrl:"https",imgUrl:"https",imgUrl:"https"} 
+    {tipo: "triple", tamaño: 42, baño: "si", imgUrl:"https",imgUrl:"https",imgUrl:"https"} 
+    {tipo: "suit"  , tamaño: 48, baño: "si", imgUrl:"https",imgUrl:"https",imgUrl:"https"} 
+}
+    
+
+    bienvenida: function darBienvenida(){
+        alert("bienvenido" + this.nombre + "al curso");
+    }
+__________________________________________________________
+.html
+<h2>Contacto</h2>
+               <button id="agregar">agregar</button>
+               <div id="dinamic"></div>
+ .js
+//Constantes para el div contenedor de los imputs y el boton de agregar
+const contenedor = document.querySelector('#dinamic');
+const btnAgregar = document.querySelector('#agregar');
+
+
+//variable para el total de elementos agregados
+let total = 1;
+
+//Metodo que se ejecuta cuando se da click al boton de agregar elementos
+
+btnAgregar.addEventListener('click', e =>{
+    let div = document.createElement('div');
+    div.innerHTML = `<Label>${total++}</label> - <input type="text" name="nombre[]" placeholder="Nombre" required><button onclick="eliminar(this)"></button>`;
+    contenedor.appendChild(div);
+})
+/*Método para eliminar el div contenedor del input
+@param {this} e
+*/
+
+const eliminar = (e) => {
+    const divPadre = e.parentNode;
+    contenedor.removeChild(divPadre)
+    actualizarContador();
+};
+//Método para actualizar el contador de los elementos agregados
+const actualizarContador = () => {
+    let divs = contenedor.children;
+    total = 1;
+    for (let i=0; i <divs.length; i++) {
+        divs[i].children[0].innerHTML = total++;}};
+_____________________________________________________________________
